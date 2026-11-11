@@ -1,0 +1,89 @@
+# ==============================================================================
+# DC VOLTAGE AI NVR — EXAMPLE CONFIGURATION TEMPLATE
+# Developer: DC VOLTAGE NETWORK
+# Product: DC VOLTAGE AI NVR
+# Tagline: Intelligent Surveillance. Zero Blind Spots.
+# ==============================================================================
+
+mqtt:
+  enabled: false
+
+detectors:
+  ov:
+    type: openvino
+    device: CPU
+
+model:
+  width: 300
+  height: 300
+  input_tensor: nhwc
+  input_pixel_format: bgr
+
+semantic_search:
+  enabled: true
+
+genai:
+  gemini:
+    provider: gemini
+    api_key: "${GEMINI_API_KEY}"
+    model: gemini-2.5-flash
+    roles:
+      - chat
+      - descriptions
+
+go2rtc:
+  streams:
+    front_camera:
+      - rtsp://admin:YOUR_CAMERA_PASSWORD@192.168.1.100:554/Streaming/Channels/101
+    front_camera_sub:
+      - rtsp://admin:YOUR_CAMERA_PASSWORD@192.168.1.100:554/Streaming/Channels/102
+
+cameras:
+  front_camera:
+    ffmpeg:
+      hwaccel_args: preset-vaapi
+      inputs:
+        - path: rtsp://127.0.0.1:8554/front_camera
+          input_args: preset-rtsp-restream
+          roles:
+            - record
+        - path: rtsp://127.0.0.1:8554/front_camera_sub
+          input_args: preset-rtsp-restream
+          roles:
+            - detect
+    detect:
+      enabled: true
+      width: 640
+      height: 360
+      fps: 5
+    review:
+      genai:
+        enabled: true
+        alerts: true
+        detections: true
+    record:
+      enabled: true
+      continuous:
+        days: 3
+      alerts:
+        retain:
+          days: 14
+          mode: motion
+      detections:
+        retain:
+          days: 14
+          mode: motion
+    snapshots:
+      enabled: true
+      retain:
+        default: 14
+    objects:
+      track:
+        - person
+        - car
+        - dog
+        - cat
+    notifications:
+      enabled: true
+
+version: 0.18-0

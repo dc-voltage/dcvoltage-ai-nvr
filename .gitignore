@@ -1,0 +1,41 @@
+# ==============================================================================
+# DC VOLTAGE AI NVR — GITIGNORE
+# Privacy Protection & Secret Sanitization
+# ==============================================================================
+
+# Private Configurations, Passwords & Credentials
+config/config.yml
+config/backup_config.yaml
+config/*.db*
+config/*.lock
+config/.*
+config/notifications.pem
+config/model_cache/
+config/dcv/
+.env
+.env.detected
+
+# Video Recordings, Snapshots & Personal Footage (NEVER COMMIT)
+storage/
+recordings/
+snapshots/
+vault/
+cache/
+backups/
+
+# Upstream Raw Archives
+frigate-0.18.2.tar.gz
+frigate-0.18.2.zip
+inspect_archives/
+
+# Python & Test Artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+*.log
+
+# Node.js & Temporary Builds
+frigate-0.18.2/web/node_modules/
+frigate-0.18.2/web/.pnpm-store/

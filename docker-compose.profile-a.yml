@@ -1,0 +1,36 @@
+# ==============================================================================
+# DC VOLTAGE AI NVR — PROFILE A: OLDER LAPTOP / LOW-POWER MINI PC
+# CPU-Only Fallback • 4-8 GB RAM • Adaptive Low-FPS Detection (3-5 FPS)
+# ==============================================================================
+
+services:
+  dcv-ai-nvr:
+    container_name: dcvoltage-ai-nvr-profile-a
+    image: dcvoltage/ai-nvr:latest
+    pull_policy: missing
+    restart: unless-stopped
+    privileged: true
+    shm_size: "256mb"
+    environment:
+      - TZ=UTC
+      - DCV_PROFILE=A
+      - DCV_CONFIG_DIR=/config/dcv
+      - FRIGATE_RTSP_PASSWORD=dcv_secure_vault_pass
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./config:/config
+      - ./storage:/media/frigate
+      - type: tmpfs
+        target: /tmp/cache
+        tmpfs:
+          size: 500000000
+    ports:
+      - "5000:5000"
+      - "8554:8554"
+      - "8555:8555/tcp"
+      - "8555:8555/udp"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "--silent", "http://127.0.0.1:5000/api/version"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

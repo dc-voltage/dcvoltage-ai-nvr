@@ -1,0 +1,45 @@
+# ==============================================================================
+# DC VOLTAGE AI NVR — PROFILE C: ADVANCED NVR SERVER
+# Dedicated NVIDIA GPU (NVDEC/CUDA/TensorRT) • 16-32 GB RAM • 8-16 Cameras
+# ==============================================================================
+
+services:
+  dcv-ai-nvr:
+    container_name: dcvoltage-ai-nvr-profile-c
+    image: dcvoltage/ai-nvr:latest-tensorrt
+    pull_policy: missing
+    restart: unless-stopped
+    privileged: true
+    shm_size: "1024mb"
+    environment:
+      - TZ=UTC
+      - DCV_PROFILE=C
+      - DCV_CONFIG_DIR=/config/dcv
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - FRIGATE_RTSP_PASSWORD=dcv_secure_vault_pass
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./config:/config
+      - ./storage:/media/frigate
+      - type: tmpfs
+        target: /tmp/cache
+        tmpfs:
+          size: 2000000000
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    ports:
+      - "5000:5000"
+      - "8554:8554"
+      - "8555:8555/tcp"
+      - "8555:8555/udp"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "--silent", "http://127.0.0.1:5000/api/version"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

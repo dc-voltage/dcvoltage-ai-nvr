@@ -1,0 +1,149 @@
+{
+  "general": {
+    "loading": "ലോഡ് ചെയ്യുന്നു...",
+    "error": "പിശക്",
+    "search": "തിരയുക",
+    "filter": "ഫിൽട്ടർ",
+    "clear": "മായ്ക്കുക",
+    "close": "അടയ്ക്കുക",
+    "save": "സംരക്ഷിക്കുക",
+    "cancel": "റദ്ദാക്കുക",
+    "delete": "ഡിലീറ്റ് ചെയ്യുക",
+    "edit": "എഡിറ്റ് ചെയ്യുക",
+    "submit": "സമർപ്പിക്കുക",
+    "back": "തിരികെ പോവുക",
+    "hide": "{{item}} മറയ്ക്കുക",
+    "show": "{{item}} കാണിക്കുക",
+    "ID": "ഐഡി",
+    "none": "ഒന്നുമില്ല",
+    "all": "എല്ലാം",
+    "other": "മറ്റുള്ളവ"
+  },
+  "button": {
+    "add": "ചേർക്കുക",
+    "apply": "പ്രയോഗിക്കുക",
+    "applying": "പ്രയോഗിക്കുന്നു…",
+    "reset": "റീസെറ്റ്",
+    "undo": "പഴയപടിയാക്കുക",
+    "done": "പൂർത്തിയായി",
+    "enabled": "പ്രവർത്തനക്ഷമമാക്കി",
+    "enable": "പ്രവർത്തനക്ഷമമാക്കുക",
+    "disabled": "പ്രവർത്തനരഹിതമാക്കി",
+    "disable": "പ്രവർത്തനരഹിതമാക്കുക",
+    "save": "സംരക്ഷിക്കുക",
+    "saving": "സംരക്ഷിക്കുന്നു…",
+    "cancel": "റദ്ദാക്കുക",
+    "close": "അടയ്ക്കുക",
+    "copy": "കോപ്പി ചെയ്യുക",
+    "copiedToClipboard": "ക്ലിപ്പ്ബോർഡിലേക്ക് കോപ്പി ചെയ്തു",
+    "back": "തിരികെ",
+    "history": "ചരിത്രം",
+    "fullscreen": "പൂർണ്ണസ്‌ക്രീൻ",
+    "exitFullscreen": "പൂർണ്ണസ്‌ക്രീൻ ഒഴിവാക്കുക",
+    "pictureInPicture": "പിക്ചർ-ഇൻ-പിക്ചർ",
+    "twoWayTalk": "ടു-വേ സംസാരം",
+    "cameraAudio": "ക്യാമറ ഓഡിയോ",
+    "on": "ഓൺ",
+    "off": "ഓഫ്",
+    "edit": "എഡിറ്റ്",
+    "delete": "ഡിലീറ്റ്",
+    "yes": "അതെ",
+    "no": "അല്ല",
+    "download": "ഡൗൺലോഡ്",
+    "info": "വിവരം",
+    "play": "പ്ലേ ചെയ്യുക",
+    "export": "എക്സ്പോർട്ട്",
+    "next": "അടുത്തത്",
+    "continue": "തുടരുക"
+  },
+  "menu": {
+    "branding": "DC VOLTAGE AI NVR",
+    "tagline": "Intelligent Surveillance. Zero Blind Spots.",
+    "developer": "DC VOLTAGE NETWORK",
+    "system": "സിസ്റ്റം",
+    "systemMetrics": "സിസ്റ്റം മെട്രിക്‌സ്",
+    "configuration": "കോൺഫിഗറേഷൻ",
+    "systemLogs": "സിസ്റ്റം ലോഗുകൾ",
+    "profiles": "പ്രൊഫൈലുകൾ",
+    "settings": "ക്രമീകരണങ്ങൾ",
+    "configurationEditor": "കോൺഫിഗറേഷൻ എഡിറ്റർ",
+    "languages": "ഭാഷകൾ",
+    "language": {
+      "en": "English (ഇംഗ്ലീഷ്)",
+      "ml": "മലയാളം (Malayalam)",
+      "es": "Español (സ്പാനിഷ്)",
+      "hi": "हिन्दी (ഹിന്ദി)",
+      "ar": "العربية (അറബിക്)",
+      "withSystem": {
+        "label": "സിസ്റ്റം ക്രമീകരണങ്ങൾ ഉപയോഗിക്കുക"
+      }
+    },
+    "appearance": "ദൃശ്യരൂപം",
+    "darkMode": {
+      "label": "ഡാർക്ക് മോഡ്",
+      "light": "ലൈറ്റ്",
+      "dark": "ഡാർക്ക്",
+      "withSystem": {
+        "label": "സിസ്റ്റം ലൈറ്റ്/ഡാർക്ക് മോഡ് ഉപയോഗിക്കുക"
+      }
+    },
+    "withSystem": "സിസ്റ്റം",
+    "theme": {
+      "label": "തീം",
+      "blue": "നീല (Blue)",
+      "green": "പച്ച (Green)",
+      "nord": "നോർഡ് (Nord)",
+      "red": "ചുവപ്പ് (Red)",
+      "highcontrast": "ഹൈ കോൺട്രാസ്റ്റ്",
+      "default": "ഡിഫോൾട്ട്"
+    },
+    "help": "സഹായം",
+    "documentation": {
+      "title": "ഡോക്യുമെന്റേഷൻ",
+      "label": "DC VOLTAGE AI NVR ഡോക്യുമെന്റേഷൻ"
+    },
+    "restart": "DC VOLTAGE NVR റീസ്റ്റാർട്ട് ചെയ്യുക",
+    "live": {
+      "title": "തത്സമയ ദൃശ്യങ്ങൾ",
+      "allCameras": "എല്ലാ ക്യാമറകളും",
+      "cameras": {
+        "title": "ക്യാമറകൾ",
+        "count_one": "{{count}} ക്യാമറ",
+        "count_other": "{{count}} ക്യാമറകൾ"
+      }
+    },
+    "review": "അവലോകനം (Events)",
+    "explore": "തിരച്ചിൽ (Explore)",
+    "export": "എക്സ്പോർട്ട്",
+    "cameras": "ക്യാമറ മാനേജ്മെന്റ്",
+    "tracking": "എഐ ട്രാക്കിംഗ്",
+    "vehicles": "വാഹന അനലിറ്റിക്സ്",
+    "assistant": "എഐ അസിസ്റ്റന്റ്",
+    "telegram": "ടെലിഗ്രാം അറിയിപ്പുകൾ",
+    "analytics": "സുരക്ഷാ അനലിറ്റിക്സ്",
+    "storage": "സ്റ്റോറേജ് നിലവറ",
+    "setup": "സജ്ജീകരണ വിസാർഡ്",
+    "features": "സവിശേഷതകൾ",
+    "faceLibrary": "മുഖ രജിസ്ട്രേഷൻ",
+    "classification": "വർഗ്ഗീകരണം",
+    "chat": "എഐ ചാറ്റ്",
+    "user": {
+      "title": "ഉപയോക്താവ്",
+      "account": "അക്കൗണ്ട്",
+      "current": "നിലവിലെ യൂസർ: {{user}}",
+      "anonymous": "അജ്ഞാതൻ",
+      "logout": "ലോഗ് ഔട്ട്",
+      "setPassword": "പാസ്‌വേഡ് നൽകുക"
+    }
+  },
+  "toast": {
+    "copyUrlToClipboard": "യുആർഎൽ ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത്തി.",
+    "save": {
+      "title": "സംരക്ഷിക്കുക",
+      "success": "വിജയകരമായി സംരക്ഷിച്ചു.",
+      "error": {
+        "title": "സംരക്ഷിക്കാൻ കഴിഞ്ഞില്ല"
+      }
+    }
+  }
+}

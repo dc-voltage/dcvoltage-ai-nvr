@@ -1,0 +1,55 @@
+# ==============================================================================
+# DC VOLTAGE AI NVR — PRODUCTION DOCKER COMPOSE CONFIGURATION
+# Developer: DC VOLTAGE NETWORK
+# Product: DC VOLTAGE AI NVR
+# Tagline: Intelligent Surveillance. Zero Blind Spots.
+# ==============================================================================
+
+services:
+  dcv-ai-nvr:
+    container_name: dcvoltage-ai-nvr
+    image: ${DCV_IMAGE:-dcvoltage/ai-nvr:latest}
+    pull_policy: missing
+    restart: unless-stopped
+    privileged: true
+    shm_size: ${SHM_SIZE:-512mb}
+    environment:
+      - TZ=${TIMEZONE:-UTC}
+      - DCV_PROFILE=${DCV_PROFILE:-B}
+      - DCV_CONFIG_DIR=/config/dcv
+      - FRIGATE_RTSP_PASSWORD=${RTSP_PASSWORD:-dcv_secure_vault_pass}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID:-}
+      - AI_ASSISTANT_PROVIDER=${AI_ASSISTANT_PROVIDER:-ollama}
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://127.0.0.1:11434}
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${CONFIG_PATH:-./config}:/config
+      - ${STORAGE_PATH:-./storage}:/media/frigate
+      - ./frigate-0.18.2/frigate:/opt/frigate/frigate
+      - ./frigate-0.18.2/web/dist:/opt/frigate/web
+      - type: tmpfs
+        target: /tmp/cache
+        tmpfs:
+          size: ${TMPFS_CACHE_SIZE:-1000000000}
+    devices:
+      # Direct Rendering Infrastructure (Intel VAAPI/QSV or AMD Radeon)
+      - /dev/dri:/dev/dri
+    ports:
+      - "5000:5000"       # Web Dashboard & REST/WS APIs
+      - "8554:8554"       # RTSP Ingestion & Re-streaming
+      - "8555:8555/tcp"   # WebRTC Signaling & Media (TCP)
+      - "8555:8555/udp"   # WebRTC Media (UDP)
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "--silent", "http://127.0.0.1:5000/api/version"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 45s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"

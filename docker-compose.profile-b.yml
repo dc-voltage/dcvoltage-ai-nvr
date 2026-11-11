@@ -1,0 +1,39 @@
+# ==============================================================================
+# DC VOLTAGE AI NVR — PROFILE B: STANDARD PC (RECOMMENDED)
+# Intel / AMD Acceleration • Coral TPU • 8-16 GB RAM • 4-8 Cameras
+# ==============================================================================
+
+services:
+  dcv-ai-nvr:
+    container_name: dcvoltage-ai-nvr-profile-b
+    image: dcvoltage/ai-nvr:latest
+    pull_policy: missing
+    restart: unless-stopped
+    privileged: true
+    shm_size: "512mb"
+    environment:
+      - TZ=UTC
+      - DCV_PROFILE=B
+      - DCV_CONFIG_DIR=/config/dcv
+      - FRIGATE_RTSP_PASSWORD=dcv_secure_vault_pass
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./config:/config
+      - ./storage:/media/frigate
+      - type: tmpfs
+        target: /tmp/cache
+        tmpfs:
+          size: 1000000000
+    devices:
+      - /dev/dri:/dev/dri
+      - /dev/bus/usb:/dev/bus/usb  # Google Coral USB TPU pass-through
+    ports:
+      - "5000:5000"
+      - "8554:8554"
+      - "8555:8555/tcp"
+      - "8555:8555/udp"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "--silent", "http://127.0.0.1:5000/api/version"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
